@@ -5,10 +5,6 @@ import (
 	"net/http"
 )
 
-type Routes struct {
-	Routes []Route `json:"Routes"`
-}
-
 type Route struct {
 	Route string `json:"Route"`
 	Methods string `json:"Method(s)"`
@@ -28,12 +24,9 @@ func IndexHandler(c echo.Context) error {
 		Description: "Creates and returns a UUID for a url.",
 	}
 
-	routes := Routes{
-		Routes: []Route{
-			redirectRoute,
-			createUUIDRoute,
-		},
+	var endpoints = map[string][]Route{
+		"Endpoints": {redirectRoute, createUUIDRoute},
 	}
 
-	return c.JSON(http.StatusOK, routes)
+	return c.JSON(http.StatusOK, endpoints)
 }
