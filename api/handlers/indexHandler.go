@@ -8,6 +8,7 @@ import (
 type Route struct {
 	Route string `json:"Route"`
 	Methods string `json:"Method(s)"`
+	Parameters map[string]string
 	Description string `json:"Description"`
 }
 
@@ -21,6 +22,7 @@ func IndexHandler(c echo.Context) error {
 	var createUUIDRoute = Route{
 		Route: "/api/create_uuid_key",
 		Methods: "POST",
+		Parameters: map[string]string{"url": "The url to shorten"},
 		Description: "Creates and returns a UUID for a url.",
 	}
 
