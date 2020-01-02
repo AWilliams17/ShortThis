@@ -9,7 +9,8 @@ import (
 func CreateRouter() *echo.Echo {
 	e := echo.New()
 
-	e.GET("/api/redirect", handlers.GetURLFromUUID)
+	e.GET("/api", handlers.IndexHandler)
+	e.GET("/api/redirect/:uuid", handlers.GetURLFromUUID)
 	e.POST("/api/create_uuid_key", handlers.CreateUUIDFromURL)
 
 	return e
