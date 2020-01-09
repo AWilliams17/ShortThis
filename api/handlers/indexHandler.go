@@ -6,23 +6,23 @@ import (
 )
 
 type Route struct {
-	Route string `json:"Route"`
-	Methods string `json:"Method(s)"`
-	Parameters map[string]string
+	Route       string `json:"Route"`
+	Methods     string `json:"Method(s)"`
+	Parameters  map[string]string
 	Description string `json:"Description"`
 }
 
 func IndexHandler(c echo.Context) error {
 	redirectRoute := &Route{
-		Route: "/api/redirect:uuid",
-		Methods: "GET",
+		Route:       "/api/redirect:uuid",
+		Methods:     "GET",
 		Description: "Returns the original URL for the given UUID, as well as when said UUID will expire.",
 	}
 
 	createUUIDRoute := &Route{
-		Route: "/api/create_uuid_key",
-		Methods: "POST",
-		Parameters: map[string]string{"url": "The url to shorten"},
+		Route:       "/api/create_uuid_key",
+		Methods:     "POST",
+		Parameters:  map[string]string{"url": "The url to shorten"},
 		Description: "Creates and returns a UUID for a url.",
 	}
 

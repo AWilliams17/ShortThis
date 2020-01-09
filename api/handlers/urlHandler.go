@@ -28,8 +28,7 @@ func CreateUUIDFromURL() echo.HandlerFunc {
 			return c.JSON(http.StatusBadRequest, errorResponse)
 		}
 
-		_, err := url.ParseRequestURI(urlBinding.Url)
-		if err != nil {
+		if _, err := url.ParseRequestURI(urlBinding.Url); err != nil {
 			errorResponse := &ErrorResponse{"A valid url is required."}
 			return c.JSON(http.StatusBadRequest, errorResponse)
 		}
@@ -46,7 +45,7 @@ func GetURLFromUUID() echo.HandlerFunc {
 		urlUUID := c.Param("uuid")
 		urlEntry, err := datastore.FindUrlEntry(urlUUID)
 
-		if err != nil{
+		if err != nil {
 			errorResponse := &ErrorResponse{err.Error()}
 			return c.JSON(http.StatusBadRequest, errorResponse)
 		}
