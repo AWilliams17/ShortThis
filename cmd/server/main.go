@@ -19,6 +19,7 @@ func main() {
 
 	e := api.CreateRouter()
 	e.Use(middleware.Logger())
+
 	e.Use(middleware.Recover())
 
 	e.Start(":8000")

@@ -8,15 +8,15 @@ import (
 )
 
 type ErrorResponse struct {
-	Error string `json:"error"`
+	Error string `json:"Error"`
 }
 
 type UrlBinding struct {
-	Url string `json:"url"`
+	Url string `json:"URL"`
 }
 
 type UUIDBinding struct {
-	UUID string `json:"uuid"`
+	UUID string `json:"UUID"`
 }
 
 func CreateUUIDFromURL() echo.HandlerFunc {
